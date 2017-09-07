@@ -31,7 +31,7 @@ scanner의 nextLine() 메소드는 Scan한 소스의 다음 문자열 라인을 
 
 ## MVC
 
-![Alt text](/https://github.com/superalan89/4th_Memo/blob/master//img/mvc.png "MVC")
+![MVC](/img/mvc.png "MVC")
 
 MVC란 Model View Controller의 약자로 에플리케이션을 세가지의 역할로 구분한 개발 방법론이다. 아래의 그림처럼 사용자가 Controller를 조작하면 Controller는 Model을 통해서 데이터를 가져오고 그 정보를 바탕으로 시각적인 표현을 담당하는 View를 제어해서 사용자에게 전달하게 된다.
 

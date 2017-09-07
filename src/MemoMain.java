@@ -18,6 +18,7 @@ public class MemoMain {
       // d - delete : 데이터 삭제모드로 전환
       String command = "";
       
+      // 명령어 입력처리 과정
       while(!command.equals("exit")) {
          System.out.println("------------명령어를 입력하세요------------");
          System.out.println("c : 쓰기, r : 읽기, u : 수정, d : 삭제, l : 목록");
@@ -25,10 +26,11 @@ public class MemoMain {
          System.out.println("-------------------------------------");
          
          command = scanner.nextLine();
-         //명령어 분기처리
+         
+         //명령어 분기처리 case문을 이용하여 각 조건별 어떤 값을 가져오는지에 대한 설명
          switch(command) {
-         case "c" : 
-            mm.create(scanner);
+         case "c" :
+            mm.create(scanner);  // 문자열 입출력을 위해 scanner util을 
             break;
          case "r" :
             mm.readList(scanner);
@@ -39,14 +41,14 @@ public class MemoMain {
          case "d" :
             mm.deleteList(scanner);
             break;
-         case "l" : 
+         case "l" :
             mm.showList();
          }
       }
-      System.out.println("프로그램이 끝났습니다.");
+      System.out.println("프로그램이 끝났습니다."); // 마지막 프로그램 종료시 종료메세지 출력
    }
    
-   // 키보드 입력을 받는 함수
+   // 키보드 입력을 받는 함수 - 메모를 생성
    public void create(Scanner scanner) {
       Memo memo = new Memo();
       
@@ -57,12 +59,12 @@ public class MemoMain {
       System.out.println("내용을 임력하세요 : ");
       memo.content = scanner.nextLine();
       
-      memo.datetime = System.currentTimeMillis();
+      memo.datetime = System.currentTimeMillis();  // 현재 날짜를 표시, UTC 1970년 1월 1일 00:00 기준으로 long 형으로 반환
       
       memoList.add(memo);
    }
    
-   // memo List를 보여준다
+   // 메모를 검색후 해당 정보를 보여줌
    public void showList() {
       for(Memo item : memoList) {
          System.out.print("NO : " + item.no);
@@ -70,7 +72,7 @@ public class MemoMain {
       }
    }
    
-   //memo List를 지운다.
+   // 해당 메모를 삭제 (삭제를 위해 remove 유틸을 활용)
    public void deleteList(Scanner scanner) {
       System.out.print("글 번호 입력 : ");
       String number = scanner.nextLine();
@@ -79,10 +81,9 @@ public class MemoMain {
       for(int i = Integer.parseInt(number) - 1; i < memoList.size(); i++) {
          memoList.get(i).no--;
       }
-      
    }
    
-   //memo List를 수정한다.
+   // 메모를 수정
    public void updateList(Scanner scanner) {
       System.out.print("글 번호 입력 : ");
       int no = Integer.parseInt(scanner.nextLine()) - 1;
@@ -93,7 +94,7 @@ public class MemoMain {
       memoList.get(no).content = scanner.nextLine();
       
    }
-   // memo List
+   // 메모 목록을 표시
    public void readList(Scanner scanner) {
       System.out.print("글 번호 입력 : ");
       int no = Integer.parseInt(scanner.nextLine()) - 1;
@@ -105,7 +106,7 @@ public class MemoMain {
       System.out.println("Author : " + imsi.name);
       System.out.println("Content : " + imsi.content);
       
-      SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd hh:mm:ss");
+      SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd hh:mm:ss"); // SimpleDataFormat 유틸을 활용하여 날짜 양식을 표시
       String formattedDate = sdf.format(imsi.datetime);
       System.out.println("Date : " + formattedDate);
    }
